@@ -9,7 +9,7 @@ requires:
 provides:
 - foo
 instructions:
-- unpack: tar -xvf foo-0.1.0.tar.xz && cd sharutils-0.1.0
+- unpack: tar -xvf foo-0.1.0.tar.xz && cd foo-0.1.0
   pre: "sed -i 's/bar/foo/g' Makefile.in"
   configure: "./configure --prefix=/usr"
   build: "make"
@@ -20,4 +20,28 @@ sources:
 - archive: foo-0.1.0.tar.xz
   md5: d3b07384d113edec49eaa6238ad5ff00
   sha256: b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c
+  destination: /usr
+---
+name: bar
+version: 0.1.1
+release: null
+description: "The bar package"
+summary: "bar is the bar"
+requires:
+- foo
+- caz
+provides:
+- bar
+instructions:
+- unpack: tar -xvf bar-0.1.1.tar.xz && cd bar-0.1.1
+  pre: "sed -i 's/foo/bar/g' Makefile.in"
+  configure: "./configure --prefix=/usr"
+  build: "make"
+  test: "make check"
+  install: "make install"
+  post: ""
+sources:
+- archive: bar-0.1.1.tar.xz
+  md5: c157a79031e1c40f85931829bc5fc552
+  sha256: 7d865e959b2466918c9863afca942d0fb89d7c9ac0c99bafc3749504ded97730
   destination: /usr

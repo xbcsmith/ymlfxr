@@ -39,13 +39,14 @@ usage:
     let docs = YamlLoader::load_from_str(&contents).unwrap();
 
     // Multi document support, doc is a yaml::Yaml
-    let doc = &docs[0];
-
-    // Dump the YAML object
-    let mut out_str = String::new();
-    {
-        let mut emitter = YamlEmitter::new(&mut out_str);
-        emitter.dump(doc).unwrap(); // dump the YAML object to a String
+    // let doc = &docs[0];
+    for doc in docs.iter() {
+        // Dump the YAML object
+        let mut out_str = String::new();
+        {
+            let mut emitter = YamlEmitter::new(&mut out_str);
+            emitter.dump(doc).unwrap(); // dump the YAML object to a String
+        }
+        println!("{}", out_str);
     }
-    println!("{}", out_str);
 }
