@@ -8,7 +8,9 @@ use std::io::prelude::*;
 
 fn main() {
     let matches = App::new("ymlq")
-        .about("Parses an input file to do awesome things")
+        .about("Parses an input yaml and output v1.2 yaml file
+usage:
+    ymlfxr bad.yaml > good.yaml")
         .version("0.1.0")
         .author("Brett Smith <bc.smith@sas.com>")
         .arg(
