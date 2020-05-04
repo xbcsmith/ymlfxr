@@ -5,17 +5,55 @@
 rust cli for formating yaml v1.2 that passes yamllint
 with default settings
 
-
 ## build
 
 ```bash
 cargo build --release
 ```
 
-## test
+## usage
 
 ```bash
-cargo run bad.yaml
+Parses an input yaml and output v1.2 yaml file
+usage:
+    ymlfxr bad.yaml > good.yaml
+
+USAGE:
+    ymlfxr [FLAGS] <input>
+
+FLAGS:
+    -b, --bak        Create backup of file
+    -d, --debug      turn on debugging information
+    -h, --help       Prints help information
+    -i, --fix        Fix the file in place
+    -V, --version    Prints version information
+
+ARGS:
+    <input>    Sets the input file to use
+```
+
+## examples
+
+```bash
+ymlfxr ./tests/bad.yaml > ./tests/good.yaml
+
+ymlfxr --fix ./tests/inplace.yaml
+
+ymlfxr --bak --fix ./tests/inplace_w_bak.yaml
+```
+
+## test
+
+functional tests require `yamllint`
+
+```bash
+./testdata/functests.sh
+```
+
+testing using cargo
+
+```bash
+cargo run ./testdata/bad.yaml
 ```
 
 output:
@@ -63,7 +101,7 @@ sources:
 ```
 
 ```bash
-yamllint bad.yaml
+yamllint ./testdata/bad.yaml
 ```
 
 output:
@@ -78,7 +116,7 @@ bad.yaml
 ```
 
 ```bash
-cargo run bad.yaml > good.yaml
+cargo run ./testdata/bad.yaml > good.yaml
 ```
 
 ```bash
