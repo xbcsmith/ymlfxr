@@ -97,6 +97,7 @@ usage:
     // let doc = &docs[0];
     for doc in docs.iter() {
         // Dump the YAML object
+<<<<<<< HEAD
         let mut content = String::new();
         {
             let mut emitter = YamlEmitter::new(&mut content);
@@ -134,4 +135,13 @@ usage:
 		  exit_with_exception!(e, "failed to delete temporary file");
 		});
   }
+=======
+        let mut out_str = String::new();
+        {
+            let mut emitter = YamlEmitter::new(&mut out_str);
+            emitter.dump(doc).unwrap(); // dump the YAML object to a String
+        }
+        println!("{}", out_str);
+    }
+>>>>>>> 941907a1da567cb59ca51a0a28bb5dccfd601fb8
 }
