@@ -32,7 +32,7 @@ fn main() {
         .about("Parses an input yaml and output v1.2 yaml file
 usage:
     ymlfxr bad.yaml > good.yaml")
-        .version("0.2.1")
+        .version("0.3.0")
         .author("Brett Smith <bc.smith@sas.com>")
         .arg(
             Arg::with_name("inplace")
