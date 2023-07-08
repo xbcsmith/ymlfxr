@@ -15,5 +15,5 @@ categories = ["command-line-utilities"]
 [dependencies]
 clap = "2.33"
 yaml-rust = "0.4"
-ulid = "0.3.1"
-bytebuffer = "0.2.1"
+ulid = "1.0"
+bytebuffer = "2.1"
