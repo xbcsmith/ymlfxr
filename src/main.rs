@@ -3,7 +3,7 @@
 extern crate clap;
 extern crate yaml_rust;
 use yaml_rust::{YamlLoader, YamlEmitter};
-use clap::{App, Arg};
+use clap::{Arg, ArgAction, Command};
 extern crate ulid;
 use ulid::Ulid;
 use std::io::BufWriter;
@@ -30,32 +30,35 @@ fn trim_newline(s: &mut String) {
 }
 
 fn main() {
-    let matches = App::new("ymlfxr")
+    let matches = Command::new("ymlfxr")
         .about("Parses an input yaml and output v1.2 yaml file
 usage:
     ymlfxr bad.yaml > good.yaml")
         .version("0.3.2")
         .author("Brett Smith <bc.smith@sas.com>")
         .arg(
-            Arg::with_name("inplace")
+            Arg::new("inplace")
                 .help("Fix the file in place")
-                .short("i")
+                .short('i')
                 .long("fix")
+                .action(ArgAction::SetTrue)
         )
         .arg(
-            Arg::with_name("backup")
+            Arg::new("backup")
                 .help("Create backup of file")
-                .short("b")
+                .short('b')
                 .long("bak")
+                .action(ArgAction::SetTrue)
         )
         .arg(
-            Arg::with_name("debug")
+            Arg::new("debug")
                 .help("turn on debugging information")
-                .short("d")
+                .short('d')
                 .long("debug")
+                .action(ArgAction::SetTrue)
         )
         .arg(
-            Arg::with_name("input")
+            Arg::new("input")
                 .help("Sets the input file to use")
                 .required(true)
                 .index(1)
@@ -63,10 +66,10 @@ usage:
         .get_matches();
 
 
-    let filename = matches.value_of("input").unwrap();
-    let backup = matches.is_present("backup");
-    let _inplace = matches.is_present("inplace");
-    let debug = matches.is_present("debug");
+    let filename = matches.get_one::<String>("input").unwrap();
+    let backup = matches.get_flag("backup");
+    let _inplace = matches.get_flag("inplace");
+    let debug = matches.get_flag("debug");
 
 	let id = Ulid::new().to_string();
 	if debug {
