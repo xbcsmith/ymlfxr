@@ -13,7 +13,7 @@ categories = ["command-line-utilities"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-clap = "2.33"
+clap = "4.1"
 yaml-rust = "0.4"
-ulid = "0.3.1"
-bytebuffer = "0.2.1"
+ulid = "1.0"
+bytebuffer = "2.1"
