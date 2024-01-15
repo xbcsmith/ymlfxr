@@ -2,7 +2,7 @@
 
 ## description
 
-rust cli for formating yaml v1.2 that passes yamllint
+rust cli for formatting yaml v1.2 that passes yamllint
 with default settings
 
 ## build
