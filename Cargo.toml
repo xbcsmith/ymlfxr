@@ -14,6 +14,6 @@ categories = ["command-line-utilities"]
 
 [dependencies]
 clap = "4.1"
-yaml-rust = "0.4"
+yaml-rust2 = "0.8"
 ulid = "1.0"
 bytebuffer = "2.1"
