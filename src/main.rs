@@ -1,8 +1,6 @@
 /// SPDX-FileCopyrightText: © 2018 Brett Smith <xbcsmith@gmail.com>
 /// SPDX-License-Identifier: Apache-2.0
-extern crate clap;
-extern crate yaml_rust;
-use yaml_rust::{YamlLoader, YamlEmitter};
+use yaml_rust2::{YamlLoader, YamlEmitter};
 use clap::{Arg, ArgAction, Command};
 extern crate ulid;
 use ulid::Ulid;
