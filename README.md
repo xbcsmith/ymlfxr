@@ -2,8 +2,7 @@
 
 ## description
 
-rust cli for formatting yaml v1.2 that passes yamllint
-with default settings
+rust cli for formatting yaml v1.2 that passes yamllint with default settings
 
 ## build
 
@@ -18,18 +17,18 @@ Parses an input yaml and output v1.2 yaml file
 usage:
     ymlfxr bad.yaml > good.yaml
 
-USAGE:
-    ymlfxr [FLAGS] <input>
+Usage: ymlfxr [OPTIONS] <input>
 
-FLAGS:
-    -b, --bak        Create backup of file
-    -d, --debug      turn on debugging information
-    -h, --help       Prints help information
-    -i, --fix        Fix the file in place
-    -V, --version    Prints version information
+Arguments:
+  <input>  Sets the input file to use
 
-ARGS:
-    <input>    Sets the input file to use
+Options:
+  -i, --fix        Fix the file in place
+  -b, --bak        Create backup of file
+  -m, --multiline  Use multiline strings
+  -d, --debug      turn on debugging information
+  -h, --help       Print help
+  -V, --version    Print version
 ```
 
 ## examples
@@ -40,6 +39,8 @@ ymlfxr ./tests/bad.yaml > ./tests/good.yaml
 ymlfxr --fix ./tests/inplace.yaml
 
 ymlfxr --bak --fix ./tests/inplace_w_bak.yaml
+
+ymlfxr -m ./tests/bar.yaml
 ```
 
 ## test

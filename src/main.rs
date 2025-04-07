@@ -52,6 +52,12 @@ usage:
                 .long("bak")
                 .action(ArgAction::SetTrue),
         )
+        .arg(Arg::new("multi")
+            .help("Use multiline strings")
+            .short('m')
+            .long("multiline")
+            .action(ArgAction::SetTrue)
+        )
         .arg(
             Arg::new("debug")
                 .help("turn on debugging information")
@@ -70,6 +76,7 @@ usage:
     let filename = matches.get_one::<String>("input").unwrap();
     let backup = matches.get_flag("backup");
     let _inplace = matches.get_flag("inplace");
+    let multiline = matches.get_flag("multi");
     let debug = matches.get_flag("debug");
 
     let id = Ulid::new().to_string();
@@ -106,6 +113,9 @@ usage:
         let mut content = String::new();
         {
             let mut emitter = YamlEmitter::new(&mut content);
+            if multiline {
+                emitter.multiline_strings(true);
+            }
             emitter.dump(doc).unwrap(); // dump the YAML object to a String
         }
         content.push('\n');
